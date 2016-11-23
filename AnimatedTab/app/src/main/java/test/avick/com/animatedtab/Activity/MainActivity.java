@@ -55,6 +55,9 @@ public class MainActivity extends AppCompatActivity {
                         case 2:
                             colorId = getResources().getColor(R.color.green_87_percent);
                             break;
+                        case 3:
+                            colorId = getResources().getColor(R.color.blue_dark_color);
+                            break;
                     }
                     getWindow().setStatusBarColor(colorId);
                 }
@@ -69,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
-                return !gestureDetector.onTouchEvent(motionEvent);
+                return  true;//!gestureDetector.onTouchEvent(motionEvent);
             }
         });
 
@@ -87,6 +90,12 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
             return Math.abs(distanceY) >= Math.abs(distanceX);
+        }
+
+        @Override
+        public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+
+            return super.onFling(e1, e2, velocityX, velocityY);
         }
     }
 }

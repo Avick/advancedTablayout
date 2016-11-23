@@ -14,13 +14,13 @@ import test.avick.com.animatedtab.Fragment.DummyFragment;
 
 public class DummyAdapter extends FragmentStatePagerAdapter {
 
-    int PAGE_COUNT = 3;
-    private String tabTitles[] = new String[] { "                          Tab1                              ", "                 Tab2                   ", "                  Tab3                                          " };
+    int PAGE_COUNT = 4;
+    private String tabTitles[] = new String[] { "       Tab1                                 ", "                 Tab2                 ", "               Tab3                   ",  "                  Tab4                         " };
     private HashMap<Integer, Fragment> fragmentHashMap;// = new HashMap<>();
 
     public DummyAdapter(FragmentManager fragmentManager) {
         super(fragmentManager);
-        fragmentHashMap = new HashMap<>(3);
+        fragmentHashMap = new HashMap<>(4);
     }
 
     @Override

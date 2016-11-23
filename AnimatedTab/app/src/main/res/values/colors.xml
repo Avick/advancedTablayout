@@ -13,6 +13,8 @@
     <color name="tab_normal_color">@color/white_four</color>
     <color name="tab_selected_color">@android:color/white</color>
 
+    <color name="blue_color">#3F51B5</color>
+    <color name="blue_dark_color">#303F9F</color>
     <color name="black_87_percent">#212121</color>
     <color name="black_54_percent">#757575</color>
     <color name="black_38_percent">#9E9E9E</color>

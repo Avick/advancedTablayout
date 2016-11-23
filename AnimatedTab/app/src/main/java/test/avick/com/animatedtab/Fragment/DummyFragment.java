@@ -55,6 +55,8 @@ public class DummyFragment extends Fragment {
             case 2:
                 colorId = getResources().getColor(R.color.algae_green_color);
                 break;
+            case 3:
+                colorId = getResources().getColor(R.color.colorPrimary);
 
         }
 
