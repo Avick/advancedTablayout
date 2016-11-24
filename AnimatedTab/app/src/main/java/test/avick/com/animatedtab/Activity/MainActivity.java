@@ -95,8 +95,8 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 2:
                         RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) tabImage.getLayoutParams();
-                        layoutParams.height = layoutParams.height+ 10;
-                        layoutParams.width = layoutParams.width+ 10;
+                        layoutParams.height = layoutParams.height+ 20;
+                        layoutParams.width = layoutParams.width+ 20;
                         tabImage.setLayoutParams(layoutParams);
                         //tabImage.setBackground(getDrawable(android.R.drawable.ic_input_add));
                         break;
@@ -119,8 +119,8 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 2:
                         RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) tabImage.getLayoutParams();
-                        layoutParams.height = layoutParams.height- 10;
-                        layoutParams.width = layoutParams.width- 10;
+                        layoutParams.height = layoutParams.height- 20;
+                        layoutParams.width = layoutParams.width- 20;
                         tabImage.setLayoutParams(layoutParams);
                         //tabImage.setBackground(getDrawable(android.R.drawable.ic_input_add));
                         break;
@@ -185,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.getTabAt(1).setCustomView(tab2);
         RelativeLayout tab3 = (RelativeLayout) LayoutInflater.from(this).inflate(R.layout.tab_icon_layout, null);
         ImageView imgTab3 = (ImageView) tab3.findViewById(R.id.img_tab);
-        imgTab3.setBackground(getDrawable(android.R.drawable.ic_dialog_email));
+        imgTab3.setBackground(getDrawable(android.R.drawable.ic_lock_idle_charging));
         RelativeLayout.LayoutParams params3 = (RelativeLayout.LayoutParams)imgTab3.getLayoutParams();
         params3.setMargins(150, 0, 150, 0);
         tabLayout.getTabAt(2).setCustomView(tab3);
