@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -41,36 +42,7 @@ public class MainActivity extends AppCompatActivity {
         viewPager.setAdapter(mAdapter);
         tabLayout.setupWithViewPager(viewPager);
 
-        RelativeLayout tab1 = (RelativeLayout) LayoutInflater.from(this).inflate(R.layout.tab_icon_layout, null);
-        ImageView imgTab1 = (ImageView) tab1.findViewById(R.id.img_tab);
-        imgTab1.setBackground(getDrawable(android.R.drawable.ic_input_delete));
-        RelativeLayout.LayoutParams params1 = (RelativeLayout.LayoutParams)imgTab1.getLayoutParams();
-        params1.setMargins(300, 0, 150, 0); //substitute parameters for left, top, right, bottom
-        imgTab1.setLayoutParams(params1);
-        tabLayout.getTabAt(0).setCustomView(tab1);
-        RelativeLayout tab2 = (RelativeLayout) LayoutInflater.from(this).inflate(R.layout.tab_icon_layout, null);
-        ImageView imgTab2 = (ImageView) tab2.findViewById(R.id.img_tab);
-        RelativeLayout.LayoutParams params2 = (RelativeLayout.LayoutParams)imgTab2.getLayoutParams();
-        params2.setMargins(150, 0, 150, 0); //substitute parameters for left, top, right, bottom
-        imgTab2.setLayoutParams(params2);
-        imgTab2.setBackground(getDrawable(android.R.drawable.ic_btn_speak_now));
-        tabLayout.getTabAt(1).setCustomView(tab2);
-        RelativeLayout tab3 = (RelativeLayout) LayoutInflater.from(this).inflate(R.layout.tab_icon_layout, null);
-        ImageView imgTab3 = (ImageView) tab3.findViewById(R.id.img_tab);
-        imgTab3.setBackground(getDrawable(android.R.drawable.ic_input_add));
-        RelativeLayout.LayoutParams params3 = (RelativeLayout.LayoutParams)imgTab3.getLayoutParams();
-        params3.setMargins(150, 0, 150, 0); //substitute parameters for left, top, right, bottom
-        imgTab3.setLayoutParams(params3);
-        tabLayout.getTabAt(2).setCustomView(tab3);
-        RelativeLayout tab4 = (RelativeLayout) LayoutInflater.from(this).inflate(R.layout.tab_icon_layout, null);
-        ImageView imgTab4 = (ImageView) tab4.findViewById(R.id.img_tab);
-        imgTab4.setBackground(getDrawable(android.R.drawable.ic_menu_call));
-        RelativeLayout.LayoutParams params4 = (RelativeLayout.LayoutParams)imgTab4.getLayoutParams();
-        params4.setMargins(150, 0, 300, 0); //substitute parameters for left, top, right, bottom
-        imgTab4.setLayoutParams(params4);
-        tabLayout.getTabAt(3).setCustomView(tab4);
-
-
+        initialTabLayoutSetUp();
 
         gestureDetector = new GestureDetector(this, new YScrollDetector());
 
@@ -116,13 +88,17 @@ public class MainActivity extends AppCompatActivity {
 
                 switch (tab.getPosition()){
                     case 0:
-                        tabImage.setBackground(getDrawable(android.R.drawable.ic_input_delete));
+                        tabImage.setBackground(getDrawable(android.R.drawable.ic_delete));
                         break;
                     case 1:
                         tabImage.setBackground(getDrawable(android.R.drawable.ic_dialog_alert));
                         break;
                     case 2:
-                        tabImage.setBackground(getDrawable(android.R.drawable.ic_menu_add));
+                        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) tabImage.getLayoutParams();
+                        layoutParams.height = layoutParams.height+ 10;
+                        layoutParams.width = layoutParams.width+ 10;
+                        tabImage.setLayoutParams(layoutParams);
+                        //tabImage.setBackground(getDrawable(android.R.drawable.ic_input_add));
                         break;
                     case 3:
                         tabImage.setBackground(getDrawable(android.R.drawable.stat_sys_speakerphone));
@@ -136,13 +112,17 @@ public class MainActivity extends AppCompatActivity {
 
                 switch (tab.getPosition()){
                     case 0:
-                        tabImage.setBackground(getDrawable(android.R.drawable.ic_delete));
+                        tabImage.setBackground(getDrawable(android.R.drawable.ic_input_delete));
                         break;
                     case 1:
                         tabImage.setBackground(getDrawable(android.R.drawable.ic_btn_speak_now));
                         break;
                     case 2:
-                        tabImage.setBackground(getDrawable(android.R.drawable.ic_input_add));
+                        RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams) tabImage.getLayoutParams();
+                        layoutParams.height = layoutParams.height- 10;
+                        layoutParams.width = layoutParams.width- 10;
+                        tabImage.setLayoutParams(layoutParams);
+                        //tabImage.setBackground(getDrawable(android.R.drawable.ic_input_add));
                         break;
                     case 3:
                         tabImage.setBackground(getDrawable(android.R.drawable.ic_menu_call));
@@ -188,12 +168,34 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void initialTabLayoutSetUp() {
+        RelativeLayout tab1 = (RelativeLayout) LayoutInflater.from(this).inflate(R.layout.tab_icon_layout, null);
+        ImageView imgTab1 = (ImageView) tab1.findViewById(R.id.img_tab);
+        imgTab1.setBackground(getDrawable(android.R.drawable.ic_delete));
+        RelativeLayout.LayoutParams params1 = (RelativeLayout.LayoutParams)imgTab1.getLayoutParams();
+        params1.setMargins(300, 0, 150, 0); //substitute parameters for left, top, right, bottom
+        imgTab1.setLayoutParams(params1);
+        tabLayout.getTabAt(0).setCustomView(tab1);
+        RelativeLayout tab2 = (RelativeLayout) LayoutInflater.from(this).inflate(R.layout.tab_icon_layout, null);
+        ImageView imgTab2 = (ImageView) tab2.findViewById(R.id.img_tab);
+        RelativeLayout.LayoutParams params2 = (RelativeLayout.LayoutParams)imgTab2.getLayoutParams();
+        params2.setMargins(150, 0, 150, 0);
+        imgTab2.setLayoutParams(params2);
+        imgTab2.setBackground(getDrawable(android.R.drawable.ic_btn_speak_now));
+        tabLayout.getTabAt(1).setCustomView(tab2);
+        RelativeLayout tab3 = (RelativeLayout) LayoutInflater.from(this).inflate(R.layout.tab_icon_layout, null);
+        ImageView imgTab3 = (ImageView) tab3.findViewById(R.id.img_tab);
+        imgTab3.setBackground(getDrawable(android.R.drawable.ic_dialog_email));
+        RelativeLayout.LayoutParams params3 = (RelativeLayout.LayoutParams)imgTab3.getLayoutParams();
+        params3.setMargins(150, 0, 150, 0);
+        tabLayout.getTabAt(2).setCustomView(tab3);
+        RelativeLayout tab4 = (RelativeLayout) LayoutInflater.from(this).inflate(R.layout.tab_icon_layout, null);
+        ImageView imgTab4 = (ImageView) tab4.findViewById(R.id.img_tab);
+        imgTab4.setBackground(getDrawable(android.R.drawable.ic_menu_call));
+        RelativeLayout.LayoutParams params4 = (RelativeLayout.LayoutParams)imgTab4.getLayoutParams();
+        params4.setMargins(150, 0, 300, 0);
+        imgTab4.setLayoutParams(params4);
+        tabLayout.getTabAt(3).setCustomView(tab4);
 
-    public static void setMargins (View v, int l, int t, int r, int b) {
-        if (v.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
-            ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
-            p.setMargins(l, t, r, b);
-            v.requestLayout();
-        }
     }
 }
