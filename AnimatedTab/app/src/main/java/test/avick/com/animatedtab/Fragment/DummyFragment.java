@@ -18,7 +18,7 @@ public class DummyFragment extends Fragment {
 
     public static final String PAGE_LABEL = "page_no";
     int position;
-    LinearLayout layout;
+    LinearLayout layout, backgroundLayout;
 
     public static DummyFragment newInstance(int position) {
         DummyFragment frag = new DummyFragment();
@@ -44,23 +44,29 @@ public class DummyFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.dummy_fragment_layout, container, false);
         layout = (LinearLayout) view.findViewById(R.id.layout);
+        backgroundLayout = (LinearLayout) view.findViewById(R.id.layout_background);
         int colorId = getResources().getColor(android.R.color.white);
+        int backgroundColorId = getResources().getColor(android.R.color.white);
         switch (position) {
             case 0 :
                 colorId = getResources().getColor(R.color.camel_color);
+                backgroundColorId = getResources().getColor(R.color.camel_color);
                 break;
             case 1:
                 colorId = getResources().getColor(R.color.red_color_87);
                 break;
             case 2:
                 colorId = getResources().getColor(R.color.algae_green_color);
+                backgroundColorId = getResources().getColor(R.color.gray_20_percent);
                 break;
             case 3:
                 colorId = getResources().getColor(R.color.colorPrimary);
+                backgroundColorId = getResources().getColor(R.color.colorPrimary);
 
         }
 
         layout.setBackgroundColor(colorId);
+        backgroundLayout.setBackgroundColor(backgroundColorId);
         return view;//super.onCreateView(inflater, container, savedInstanceState);
     }
 }
